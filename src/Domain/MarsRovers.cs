@@ -12,10 +12,10 @@ public class MarsRovers
         if (string.IsNullOrEmpty(command))
             return _startingPoint;
 
-        var splitCommand = _startingPoint.Split(":").ToList();
-        var x = int.Parse(splitCommand[0]);
-        var y = int.Parse(splitCommand[1]);
-        var direction = splitCommand[2];
+        var splitPoint = _startingPoint.Split(":").ToList();
+        var x = int.Parse(splitPoint[0]);
+        var y = int.Parse(splitPoint[1]);
+        var direction = splitPoint[2];
 
         if (command == "F")
         {
