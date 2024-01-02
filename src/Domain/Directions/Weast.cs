@@ -5,31 +5,16 @@ namespace Domain;
 internal class Weast : IDirection
 {
     private Point point;
-    private string direction = "W";
+    private DirectionType direction = DirectionType.West;
 
 
-    public Weast(Point point)
-    {
-        this.point = point;
-    }
+    public Weast(Point point) => this.point = point;
 
-    public void MoveFoward()
-    {
-        point = new Point(point.X - 1, point.Y);
-    }
+    public void MoveFoward() => point = new Point(point.X - 1, point.Y);
 
-    public void MoveRight()
-    {
-        direction = "N";
-    }
+    public void MoveRight() => direction = DirectionType.North;
 
-    public string AsString()
-    {
-        return $"{point.X}:{point.Y}:{GetDirection()}";
-    }
+    public string AsString() => $"{point.X}:{point.Y}:{GetDirection()}";
 
-    public string GetDirection()
-    {
-        return direction;
-    }
+    public string GetDirection() => direction.AsString();
 }
