@@ -1,3 +1,4 @@
+using Domain;
 using FluentAssertions;
 using Xunit;
 
@@ -6,8 +7,16 @@ namespace UnitTests;
 public class MarsRoversTests
 {
     [Fact]
-    public void Test1()
+    public void Execute_NoCommand_RemainsInStartingPoint()
     {
-        1.Should().Be(1);
+        // arrange
+        var startingPoint = "0:0:N";
+        var marsRovers = new MarsRovers();
+
+        // act
+        var result = marsRovers.Execute(startingPoint);
+
+        // assert
+        result.Should().Be(startingPoint);
     }
 }
