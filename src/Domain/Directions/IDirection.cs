@@ -2,10 +2,10 @@
 
 public interface IDirection
 {
-    public abstract void MoveFoward();
-    public abstract void MoveRight();
-    public abstract void MoveLeft();
+    public abstract Point MoveFoward(Point position);
+    public abstract IDirection MoveRight();
+    public abstract IDirection MoveLeft();
 
-    public abstract string AsString();
+    public abstract string AsString(Point position);
     public abstract string GetDirection();
 }

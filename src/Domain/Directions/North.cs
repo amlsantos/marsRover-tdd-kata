@@ -4,18 +4,29 @@ namespace Domain;
 
 public class North : IDirection
 {
-    private Point position;
+    // private Point position;
     private DirectionType direction = DirectionType.North;
 
-    public North(Point point) => position = point;
+    public Point MoveFoward(Point position)
+    {
+        return new Point(position.X, position.Y + 1);
+    }
 
-    public void MoveFoward() => position = new Point(position.X, position.Y + 1);
+    public IDirection MoveRight()
+    {
+        return new East();
+    }
 
-    public void MoveRight() => direction = DirectionType.East;
+    public IDirection MoveLeft()
+    {
+        direction = DirectionType.West;
+        return new West();
+    }
 
-    public void MoveLeft() => direction = DirectionType.West;
-
-    public string AsString() => $"{position.X}:{position.Y}:{GetDirection()}";
+    public string AsString(Point position)
+    {
+        return $"{position.X}:{position.Y}:{GetDirection()}";
+    }
 
     public string GetDirection() => direction.AsString();
 }

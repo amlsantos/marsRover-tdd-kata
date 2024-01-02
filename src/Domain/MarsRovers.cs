@@ -1,37 +1,42 @@
-﻿namespace Domain;
+﻿using Domain.Directions;
+
+namespace Domain;
 
 public class MarsRovers
 {
     private readonly string _startingPointAsString;
+    private Point position;
+    private IDirection direction;
 
-    public MarsRovers(string startingPoint) => _startingPointAsString = startingPoint;
+    public MarsRovers(string startingPoint)
+    {
+        _startingPointAsString = startingPoint;
+        position = new Point(0, 0);
+    }
 
     public string Execute(string command)
     {
         if (string.IsNullOrEmpty(command))
             return _startingPointAsString;
         
-        var point = GetStartingPoint();
+        position = GetStartingPoint();
         var directionType = GetStartingDirection();
 
-        var direction = DirectionFactory.CreateDirection(point, directionType);
+        direction = DirectionFactory.CreateDirection(directionType);
         if (command == "F")
         {
-            direction.MoveFoward();
-            return direction.AsString();
+            position = direction.MoveFoward(position);
         }
         if (command == "R")
         {
-            direction.MoveRight();
-            return direction.AsString();
+            direction = direction.MoveRight();
         }
         if (command == "L")
         {
-            direction.MoveLeft();
-            return direction.AsString();
+            direction = direction.MoveLeft();
         }
 
-        return string.Empty;
+        return direction.AsString(position);
     }
 
     private Point GetStartingPoint()

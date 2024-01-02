@@ -4,18 +4,27 @@ namespace Domain;
 
 internal class West : IDirection
 {
-    private Point position;
+    // private Point position;
     private DirectionType direction = DirectionType.West;
 
-    public West(Point point) => position = point;
+    public Point MoveFoward(Point position)
+    {
+        return new Point(position.X - 1, position.Y);
+    }
 
-    public void MoveFoward() => position = new Point(position.X - 1, position.Y);
+    public IDirection MoveRight()
+    {
+        direction = DirectionType.North;
+        return new North();
+    }
 
-    public void MoveRight() => direction = DirectionType.North;
+    public IDirection MoveLeft()
+    {
+        direction = DirectionType.South;
+        return new South();
+    }
 
-    public void MoveLeft() => direction = DirectionType.South;
-
-    public string AsString() => $"{position.X}:{position.Y}:{GetDirection()}";
+    public string AsString(Point position) => $"{position.X}:{position.Y}:{GetDirection()}";
 
     public string GetDirection() => direction.AsString();
 }
