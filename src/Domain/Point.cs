@@ -16,24 +16,4 @@ public class Point
         X = x;
         Y = y;
     }
-
-    public void IncreaseY()
-    {
-        Y += 1;
-    }
-
-    public void DecreaseY()
-    {
-        Y -= 1;
-    }
-
-    public void IncreaseX()
-    {
-        X += 1;
-    }
-
-    public void DecreaseX()
-    {
-        X -= 1;
-    }
 }

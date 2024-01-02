@@ -4,7 +4,7 @@ namespace Domain;
 
 public class DirectionFactory
 {
-    public static IDirection CreateDirection(DirectionType direction)
+    public static Direction CreateDirection(DirectionType direction)
     {
         if (direction == DirectionType.North)
             return new North();

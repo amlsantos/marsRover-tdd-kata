@@ -2,31 +2,18 @@ using Domain.Directions;
 
 namespace Domain;
 
-public class North : IDirection
+public class North : Direction
 {
-    // private Point position;
-    private DirectionType direction = DirectionType.North;
+    private DirectionType type = DirectionType.North;
 
-    public Point MoveFoward(Point position)
+    public override Point MoveFoward(Point position)
     {
         return new Point(position.X, position.Y + 1);
     }
 
-    public IDirection MoveRight()
-    {
-        return new East();
-    }
+    public override Direction MoveRight() => new East();
 
-    public IDirection MoveLeft()
-    {
-        direction = DirectionType.West;
-        return new West();
-    }
+    public override Direction MoveLeft() => new West();
 
-    public string AsString(Point position)
-    {
-        return $"{position.X}:{position.Y}:{GetDirection()}";
-    }
-
-    public string GetDirection() => direction.AsString();
+    public override string AsString() => type.AsString();
 }

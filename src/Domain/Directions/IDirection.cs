@@ -1,11 +1,10 @@
 ﻿namespace Domain.Directions;
 
-public interface IDirection
+public abstract class Direction
 {
     public abstract Point MoveFoward(Point position);
-    public abstract IDirection MoveRight();
-    public abstract IDirection MoveLeft();
+    public abstract Direction MoveRight();
+    public abstract Direction MoveLeft();
 
-    public abstract string AsString(Point position);
-    public abstract string GetDirection();
+    public abstract string AsString();
 }
