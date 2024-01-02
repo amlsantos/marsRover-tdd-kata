@@ -2,18 +2,18 @@ namespace Domain.Directions;
 
 public class East : IDirection
 {
-    private Point point;
+    private Point position;
     private DirectionType direction = DirectionType.East;
 
-    public East(Point point) => this.point = point;
+    public East(Point point) => position = point;
 
-    public void MoveFoward() => point = new Point(point.X + 1, point.Y);
+    public void MoveFoward() => position = new Point(position.X + 1, position.Y);
 
     public void MoveRight() => direction = DirectionType.South;
 
     public void MoveLeft() => direction = DirectionType.North;
 
-    public string AsString() => $"{point.X}:{point.Y}:{GetDirection()}";
+    public string AsString() => $"{position.X}:{position.Y}:{GetDirection()}";
 
     public string GetDirection() => direction.AsString();
 }

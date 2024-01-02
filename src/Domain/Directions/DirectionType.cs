@@ -11,7 +11,7 @@ public class DirectionType
 
     private readonly string _value;
 
-    private DirectionType(string displayName) => _value = displayName;
+    private DirectionType(string value) => _value = value;
 
     public static DirectionType Create(string value)
     {
