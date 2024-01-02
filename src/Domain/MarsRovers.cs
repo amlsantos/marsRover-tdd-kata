@@ -3,8 +3,15 @@ namespace Domain;
 
 public class MarsRovers
 {
-    public string Execute(string startingPoint)
+    private readonly string _startingPoint;
+
+    public MarsRovers(string startingPoint) => _startingPoint = startingPoint;
+
+    public string Execute(string commands)
     {
-        return "0:0:N";
+        if (string.IsNullOrEmpty(commands))
+            return _startingPoint;
+
+        return string.Empty;
     }
 }

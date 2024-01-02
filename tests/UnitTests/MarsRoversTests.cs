@@ -8,13 +8,15 @@ public class MarsRoversTests
 {
     [Theory]
     [InlineData("0:0:N", "0:0:N")]
+    [InlineData("1:1:N", "1:1:N")]
     public void Execute_NoCommand_RemainsInStartingPoint(string startingPoint, string expectedEndingPoint)
     {
         // arrange
-        var marsRovers = new MarsRovers();
+        var emptyCommand = string.Empty;
+        var marsRovers = new MarsRovers(startingPoint);
 
         // act
-        var result = marsRovers.Execute(startingPoint);
+        var result = marsRovers.Execute(emptyCommand);
 
         // assert
         result.Should().Be(expectedEndingPoint);
