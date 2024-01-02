@@ -43,4 +43,22 @@ public class MarsRoversTests
         // assert
         result.Should().Be(expectedEndingPoint);
     }
+
+    [Theory]
+    [InlineData("0:0:N", "0:0:E")]
+    [InlineData("0:0:E", "0:0:S")]
+    [InlineData("0:0:S", "0:0:W")]
+    [InlineData("0:0:W", "0:0:N")]
+    public void Execute_RightCommand_ReturnsCorrectPosition(string startingPoint, string expectedEndingPoint)
+    {
+        // arrange
+        var rightCommand = "R";
+        var marsRovers = new MarsRovers(startingPoint);
+
+        // act
+        var result = marsRovers.Execute(rightCommand);
+
+        // assert
+        result.Should().Be(expectedEndingPoint);
+    }
 }

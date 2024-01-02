@@ -17,10 +17,9 @@ public class MarsRovers
         var point = new Point(int.Parse(splitPoint[0]), int.Parse(splitPoint[1]));
         var directionAsString = splitPoint[2];
 
+        var direction = DirectionFactory.CreateDirection(point, directionAsString);
         if (command == "F")
         {
-            var direction = DirectionFactory.CreateDirection(point, directionAsString);
-
             direction.MoveFoward();
             return direction.AsString();
         }
