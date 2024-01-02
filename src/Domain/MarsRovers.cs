@@ -21,6 +21,12 @@ public class MarsRovers
         {
             if (direction == "N")
                 return $"{x}:{y+1}:{direction}";
+            if (direction == "E")
+                return $"{x+1}:{y}:{direction}";
+            if (direction == "S")
+                return $"{x}:{y-1}:{direction}";
+            if (direction == "W")
+                return $"{x-1}:{y}:{direction}";
         }
 
         return string.Empty;

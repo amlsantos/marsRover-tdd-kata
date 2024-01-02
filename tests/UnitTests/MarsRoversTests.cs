@@ -27,6 +27,10 @@ public class MarsRoversTests
     [InlineData("1:1:N", "1:2:N")]
     [InlineData("0:0:E", "1:0:E")]
     [InlineData("1:1:E", "2:1:E")]
+    [InlineData("0:0:S", "0:-1:S")]
+    [InlineData("1:1:S", "1:0:S")]
+    [InlineData("0:0:W", "-1:0:W")]
+    [InlineData("1:1:W", "0:1:W")]
     public void Execute_FowardCommand_ReturnsCorrectPosition(string startingPoint, string expectedEndingPoint)
     {
         // arrange
