@@ -13,6 +13,8 @@ public class North : IDirection
 
     public void MoveRight() => direction = DirectionType.East;
 
+    public void MoveLeft() => direction = DirectionType.West;
+
     public string AsString() => $"{point.X}:{point.Y}:{GetDirection()}";
 
     public string GetDirection() => direction.AsString();

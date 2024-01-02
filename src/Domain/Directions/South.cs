@@ -11,6 +11,8 @@ public class South : IDirection
 
     public void MoveRight() => direction = DirectionType.West;
 
+    public void MoveLeft() => direction = DirectionType.East;
+
     public string AsString() => $"{point.X}:{point.Y}:{GetDirection()}";
 
     public string GetDirection() => direction.AsString();

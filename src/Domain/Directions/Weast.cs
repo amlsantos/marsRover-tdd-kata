@@ -14,6 +14,8 @@ internal class Weast : IDirection
 
     public void MoveRight() => direction = DirectionType.North;
 
+    public void MoveLeft() => direction = DirectionType.South;
+
     public string AsString() => $"{point.X}:{point.Y}:{GetDirection()}";
 
     public string GetDirection() => direction.AsString();
