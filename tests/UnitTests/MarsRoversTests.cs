@@ -1,13 +1,13 @@
 using FluentAssertions;
+using Xunit;
 
 namespace UnitTests;
 
-public class UnitTest1
+public class MarsRoversTests
 {
     [Fact]
     public void Test1()
     {
         1.Should().Be(1);
-
     }
 }
