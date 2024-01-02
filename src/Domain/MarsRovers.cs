@@ -19,14 +19,19 @@ public class MarsRovers
 
         if (command == "F")
         {
-            if (IsNorth(direction))
-                return MoveNorth(point, direction);
-            if (IsEast(direction))
-                return MoveEast(point, direction);
-            if (IsSouth(direction))
-                return MoveSouth(point, direction);
-            if (IsWest(direction))
-                return MoveWest(point, direction);
+            switch (direction)
+            {
+                case "N":
+                    return MoveNorth(point, direction);
+                case "E":
+                    return MoveEast(point, direction);
+                case "S":
+                    return MoveSouth(point, direction);
+                case "W":
+                    return MoveWest(point, direction);    
+                default:
+                    throw new NotSupportedException();
+            }
         }
 
         return string.Empty;
