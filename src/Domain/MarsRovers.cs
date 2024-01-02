@@ -1,6 +1,4 @@
-﻿using Domain.Directions;
-
-namespace Domain;
+﻿namespace Domain;
 
 public class MarsRovers
 {
@@ -12,10 +10,9 @@ public class MarsRovers
     {
         if (string.IsNullOrEmpty(command))
             return _startingPointAsString;
-
-        var splitPoint = _startingPointAsString.Split(":").ToList();
-        var point = new Point(int.Parse(splitPoint[0]), int.Parse(splitPoint[1]));
-        var directionAsString = splitPoint[2];
+        
+        var point = GetStartingPoint();
+        var directionAsString = GetStartingDirection();
 
         var direction = DirectionFactory.CreateDirection(point, directionAsString);
         if (command == "F")
@@ -28,7 +25,24 @@ public class MarsRovers
             direction.MoveRight();
             return direction.AsString();
         }
+        if (command == "L")
+        {
+            direction.MoveLeft();
+            return direction.AsString();
+        }
 
         return string.Empty;
+    }
+
+    private Point GetStartingPoint()
+    {
+        var splitInput = _startingPointAsString.Split(":").ToList();
+        return new Point(int.Parse(splitInput[0]), int.Parse(splitInput[1]));
+    }
+
+    private string GetStartingDirection()
+    {
+        var splitInput = _startingPointAsString.Split(":").ToList();
+        return splitInput[2];
     }
 }
