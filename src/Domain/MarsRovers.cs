@@ -12,9 +12,9 @@ public class MarsRovers
             return _startingPointAsString;
         
         var point = GetStartingPoint();
-        var directionAsString = GetStartingDirection();
+        var directionType = GetStartingDirection();
 
-        var direction = DirectionFactory.CreateDirection(point, directionAsString);
+        var direction = DirectionFactory.CreateDirection(point, directionType);
         if (command == "F")
         {
             direction.MoveFoward();
@@ -40,9 +40,9 @@ public class MarsRovers
         return new Point(int.Parse(splitInput[0]), int.Parse(splitInput[1]));
     }
 
-    private string GetStartingDirection()
+    private DirectionType GetStartingDirection()
     {
         var splitInput = _startingPointAsString.Split(":").ToList();
-        return splitInput[2];
+        return DirectionType.Create(splitInput[2]);
     }
 }

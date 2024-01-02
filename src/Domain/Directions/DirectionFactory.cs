@@ -4,20 +4,18 @@ namespace Domain;
 
 public class DirectionFactory
 {
-    public static IDirection CreateDirection(Point point, string directionAsString)
+    public static IDirection CreateDirection(Point point, DirectionType direction)
     {
-        switch (directionAsString)
-        {
-            case "N":
-                return new North(point);
-            case "E":
-                return new East(point);
-            case "S":
-                return new South(point);
-            case "W":
-                return new Weast(point);
-            default:
-                throw new NotSupportedException();
-        }
+        if (direction == DirectionType.North)
+            return new North(point);
+        if (direction == DirectionType.East)
+            return new East(point);
+        if (direction == DirectionType.South)
+            return new South(point);
+        if (direction == DirectionType.West)
+            return new West(point);
+        else
+            throw new NotSupportedException($"Invalid direction type: {direction.AsString()}");
+        
     }
 }
