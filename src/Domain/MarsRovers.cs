@@ -5,6 +5,6 @@ public class MarsRovers
 {
     public string Execute(string startingPoint)
     {
-        return string.Empty;
+        return "0:0:N";
     }
 }

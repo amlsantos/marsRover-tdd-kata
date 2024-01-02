@@ -6,17 +6,17 @@ namespace UnitTests;
 
 public class MarsRoversTests
 {
-    [Fact]
-    public void Execute_NoCommand_RemainsInStartingPoint()
+    [Theory]
+    [InlineData("0:0:N", "0:0:N")]
+    public void Execute_NoCommand_RemainsInStartingPoint(string startingPoint, string expectedEndingPoint)
     {
         // arrange
-        var startingPoint = "0:0:N";
         var marsRovers = new MarsRovers();
 
         // act
         var result = marsRovers.Execute(startingPoint);
 
         // assert
-        result.Should().Be(startingPoint);
+        result.Should().Be(expectedEndingPoint);
     }
 }
