@@ -22,13 +22,24 @@ public class MarsRovers
             switch (direction)
             {
                 case "N":
-                    return MoveNorth(point, direction);
+                    {
+                        return MoveNorth(point, direction);
+                    }
+
                 case "E":
-                    return MoveEast(point, direction);
+                    {
+                        return MoveEast(point, direction);
+                    }
+
                 case "S":
-                    return MoveSouth(point, direction);
+                    {
+                        return MoveSouth(point, direction);
+                    }
+
                 case "W":
-                    return MoveWest(point, direction);    
+                    {
+                        return MoveWest(point, direction);
+                    }
                 default:
                     throw new NotSupportedException();
             }
@@ -45,7 +56,7 @@ public class MarsRovers
     private string MoveNorth(Point point, string direction)
     {
         var output = new Point(point.X, point.Y + 1);
-        return $"{output.X}:{output.Y}:{direction}";
+        return AsString(direction, output);
     }
 
     private bool IsEast(string direction)
@@ -56,7 +67,7 @@ public class MarsRovers
     private string MoveEast(Point point, string direction)
     {
         var output = new Point(point.X + 1, point.Y);
-        return $"{output.X}:{output.Y}:{direction}";
+        return AsString(direction, output);
     }
 
     private bool IsSouth(string direction)
@@ -67,7 +78,7 @@ public class MarsRovers
     private string MoveSouth(Point point, string direction)
     {
         var output = new Point(point.X, point.Y - 1);
-        return $"{output.X}:{output.Y}:{direction}";
+        return AsString(direction, output);
     }
 
     private bool IsWest(string direction)
@@ -78,6 +89,11 @@ public class MarsRovers
     private string MoveWest(Point point, string direction)
     {
         var output = new Point(point.X - 1, point.Y);
+        return AsString(direction, output);
+    }
+
+    private string AsString(string direction, Point output)
+    {
         return $"{output.X}:{output.Y}:{direction}";
     }
 }
