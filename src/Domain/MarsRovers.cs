@@ -13,34 +13,34 @@ public class MarsRovers
             return _startingPoint;
 
         var splitPoint = _startingPoint.Split(":").ToList();
-        var x = int.Parse(splitPoint[0]);
-        var y = int.Parse(splitPoint[1]);
-        var point = new Point(x, y);
+        var point = new Point(
+            int.Parse(splitPoint[0]), int.Parse(splitPoint[1]));
         var direction = splitPoint[2];
 
         if (command == "F")
         {
             if (IsNorth(direction))
-                return MoveNorth(x, y, point, direction);
+                return MoveNorth(point, direction);
             if (IsEast(direction))
-                return MoveEast(x, y, point, direction);
+                return MoveEast(point, direction);
             if (IsSouth(direction))
-                return MoveSouth(x, y, point, direction);
+                return MoveSouth(point, direction);
             if (IsWest(direction))
-                return MoveWest(x, y, point, direction);
+                return MoveWest(point, direction);
         }
 
         return string.Empty;
-    }    
+    }
 
     private bool IsNorth(string direction)
     {
         return direction.Equals("N", StringComparison.InvariantCultureIgnoreCase);
     }
 
-    private string MoveNorth(int x, int y, Point point, string direction)
+    private string MoveNorth(Point point, string direction)
     {
-        return $"{x}:{y + 1}:{direction}";
+        var output = new Point(point.X, point.Y + 1);
+        return $"{output.X}:{output.Y}:{direction}";
     }
 
     private bool IsEast(string direction)
@@ -48,9 +48,10 @@ public class MarsRovers
         return direction.Equals("E", StringComparison.InvariantCultureIgnoreCase);
     }
 
-    private string MoveEast(int x, int y, Point point, string direction)
+    private string MoveEast(Point point, string direction)
     {
-        return $"{x + 1}:{y}:{direction}";
+        var output = new Point(point.X + 1, point.Y);
+        return $"{output.X}:{output.Y}:{direction}";
     }
 
     private bool IsSouth(string direction)
@@ -58,9 +59,10 @@ public class MarsRovers
         return direction.Equals("S", StringComparison.InvariantCultureIgnoreCase);
     }
 
-    private string MoveSouth(int x, int y, Point point, string direction)
+    private string MoveSouth(Point point, string direction)
     {
-        return $"{x}:{y - 1}:{direction}";
+        var output = new Point(point.X, point.Y - 1);
+        return $"{output.X}:{output.Y}:{direction}";
     }
 
     private bool IsWest(string direction)
@@ -68,8 +70,9 @@ public class MarsRovers
         return direction.Equals("W", StringComparison.InvariantCultureIgnoreCase);
     }
 
-    private string MoveWest(int x, int y, Point point, string direction)
+    private string MoveWest(Point point, string direction)
     {
-        return $"{x - 1}:{y}:{direction}";
+        var output = new Point(point.X - 1, point.Y);
+        return $"{output.X}:{output.Y}:{direction}";
     }
 }

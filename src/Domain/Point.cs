@@ -2,12 +2,12 @@
 
 public class Point
 {
-    private int _x;
-    private int _y;
+    public int X {get; init;}
+    public int Y {get; init;}
 
     public Point(int x, int y)
     {
-        _x = x;
-        _y = y;
+        X = x;
+        Y = y;
     }
 }
