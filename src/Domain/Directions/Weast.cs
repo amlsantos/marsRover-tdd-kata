@@ -5,7 +5,7 @@ namespace Domain;
 internal class Weast : IDirection
 {
     private Point point;
-    private const string direction = "W";
+    private string direction = "W";
 
 
     public Weast(Point point)
@@ -18,6 +18,11 @@ internal class Weast : IDirection
         point = new Point(point.X - 1, point.Y);
     }
 
+    public void MoveRight()
+    {
+        direction = "N";
+    }
+
     public string AsString()
     {
         return $"{point.X}:{point.Y}:{GetDirection()}";
@@ -25,6 +30,6 @@ internal class Weast : IDirection
 
     public string GetDirection()
     {
-        return "W";
+        return direction;
     }
 }

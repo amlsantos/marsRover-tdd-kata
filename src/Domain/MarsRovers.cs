@@ -23,6 +23,11 @@ public class MarsRovers
             direction.MoveFoward();
             return direction.AsString();
         }
+        if (command == "R")
+        {
+            direction.MoveRight();
+            return direction.AsString();
+        }
 
         return string.Empty;
     }
