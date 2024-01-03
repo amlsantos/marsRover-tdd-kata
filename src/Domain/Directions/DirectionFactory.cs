@@ -4,7 +4,7 @@ namespace Domain;
 
 public class DirectionFactory
 {
-    public static Direction CreateDirection(DirectionType direction)
+    public static IDirection CreateDirection(DirectionType direction)
     {
         if (direction == DirectionType.North)
             return new North();
@@ -16,6 +16,5 @@ public class DirectionFactory
             return new West();
         else
             throw new NotSupportedException($"Invalid direction type: {direction.AsString()}");
-        
     }
 }

@@ -5,16 +5,18 @@ namespace Domain;
 public class MarsRovers
 {
     private readonly string _positionAsString;
+    private Point position;
+    private IDirection direction;
 
     public MarsRovers(string startingPoint) => _positionAsString = startingPoint;
 
     public string Execute(string commandsAsString)
     {
-        var position = GetStartingPoint();
-        var direction = GetStartingDirection();
+        position = GetStartingPoint();
+        direction = GetStartingDirection();
 
         if (string.IsNullOrEmpty(commandsAsString))
-            return PrintFinalPosition(position, direction);
+            return GetFinalPosition(position, direction);
 
         var commands = commandsAsString.ToCharArray();
         foreach (var command in commands)
@@ -33,7 +35,7 @@ public class MarsRovers
             }
         }
 
-        return PrintFinalPosition(position, direction);
+        return GetFinalPosition(position, direction);
     }
 
     private Point GetStartingPoint()
@@ -42,7 +44,7 @@ public class MarsRovers
         return new Point(int.Parse(splitInput[0]), int.Parse(splitInput[1]));
     }
 
-    private Direction GetStartingDirection()
+    private IDirection GetStartingDirection()
     {
         var splitInput = _positionAsString.Split(":").ToList();
         var type = DirectionType.Create(splitInput[2]);
@@ -50,7 +52,7 @@ public class MarsRovers
         return DirectionFactory.CreateDirection(type);
     }
 
-    private string PrintFinalPosition(Point position, Direction direction)
+    private string GetFinalPosition(Point position, IDirection direction)
     {
         return $"{position.X}:{position.Y}:{direction.AsString()}";
     }
