@@ -20,7 +20,8 @@ public class MarsRovers
         foreach (var c in commands)
         {
             var command = CreateCommand(rover, c);
-            rover = command.Execute();
+            rover = rover.Apply(command);
+            // rover = command.Execute();
         }
 
         return rover.GetFinalPosition();
