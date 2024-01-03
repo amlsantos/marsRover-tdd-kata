@@ -1,6 +1,4 @@
-﻿using Domain.Rovers.Directions;
-
-namespace Domain;
+﻿namespace Domain;
 
 public class MarsRovers
 {
@@ -17,30 +15,32 @@ public class MarsRovers
             return _initialState;
 
         var rover = RoverFactory.CreateFrom(_initialState);
-
         var commands = commandsAsString.ToCharArray();
-        foreach (var command in commands)
+
+        foreach (var c in commands)
         {
-            if (command.Equals('F'))
-            {
-                rover = rover.MoveFoward();
-                // position = direction.MoveFoward(position);
-            }
-            else if (command.Equals('R'))
-            {
-                rover = rover.MoveRight();
-                // direction = direction.MoveRight();
-            }
-            else if (command.Equals('L'))
-            {
-                rover = rover.MoveLeft();
-                // direction = direction.MoveLeft();
-            }
-
-
-            // OLd(ref position, ref direction, command);
+            var command = CreateCommand(rover, c);
+            rover = command.Execute();
         }
 
         return rover.GetFinalPosition();
+    }
+
+    private ICommand CreateCommand(Rover rover, char command)
+    {
+        if (command.Equals('F'))
+        {
+            return new MoveFowardCommand(rover);
+        }
+        else if (command.Equals('R'))
+        {
+            return new MoveRightCommand(rover);
+        }
+        else if (command.Equals('L'))
+        {
+            return new MoveLeftCommand(rover);
+        }
+
+        throw new NotSupportedException($"Not supported command: {command}");
     }
 }
