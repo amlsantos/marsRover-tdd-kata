@@ -1,5 +1,3 @@
-using Domain.Directions;
-
 namespace Domain.Rovers.Directions;
 
 public class East : IDirection
