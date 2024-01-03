@@ -31,10 +31,7 @@ public class Rover
         return new Rover(_position, left);
     }
 
-    public Rover Apply(ICommand command)
-    {
-        return command.Execute();
-    }
+    public Rover Apply(ICommand command) => command.Execute();
 
     public string GetFinalPosition()
     {
