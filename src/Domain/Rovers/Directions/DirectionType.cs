@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace Domain;
+﻿namespace Domain.Rovers.Directions;
 
 public class DirectionType
 {

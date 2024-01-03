@@ -1,4 +1,4 @@
-﻿namespace Domain.Directions;
+﻿namespace Domain.Rovers.Directions;
 
 public interface IDirection
 {

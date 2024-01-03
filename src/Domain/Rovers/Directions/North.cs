@@ -1,6 +1,4 @@
-using Domain.Directions;
-
-namespace Domain;
+namespace Domain.Rovers.Directions;
 
 public class North : IDirection
 {

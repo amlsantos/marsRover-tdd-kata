@@ -1,59 +1,65 @@
-﻿using Domain.Directions;
+﻿using Domain.Rovers.Directions;
 
 namespace Domain;
 
 public class MarsRovers
 {
-    private readonly string _positionAsString;
-    private Point position;
-    private IDirection direction;
-
-    public MarsRovers(string startingPoint) => _positionAsString = startingPoint;
+    private readonly string _initialState;
+    private Rover rover;
+    public MarsRovers(string startingPoint) => _initialState = startingPoint;
 
     public string Execute(string commandsAsString)
     {
-        position = GetStartingPoint();
-        direction = GetStartingDirection();
-
         if (string.IsNullOrEmpty(commandsAsString))
-            return GetFinalPosition(position, direction);
+            return _initialState;
+
+        rover = CreateFrom(_initialState);
 
         var commands = commandsAsString.ToCharArray();
         foreach (var command in commands)
         {
             if (command.Equals('F'))
             {
-                position = direction.MoveFoward(position);
+                rover = rover.MoveFoward();
+                // position = direction.MoveFoward(position);
             }
             else if (command.Equals('R'))
             {
-                direction = direction.MoveRight();
+                rover = rover.MoveRight();
+                // direction = direction.MoveRight();
             }
             else if (command.Equals('L'))
             {
-                direction = direction.MoveLeft();
+                rover = rover.MoveLeft();
+                // direction = direction.MoveLeft();
             }
+
+
+            // OLd(ref position, ref direction, command);
         }
 
-        return GetFinalPosition(position, direction);
+        return rover.GetFinalPosition();
     }
 
-    private Point GetStartingPoint()
+    public Rover CreateFrom(string _positionAsString)
+    {
+        var position = GetStartingPoint(_positionAsString);
+        var direction = GetStartingDirection(_positionAsString);
+
+        return new Rover(position, direction);
+    }
+
+    private Point GetStartingPoint(string _positionAsString)
     {
         var splitInput = _positionAsString.Split(":").ToList();
         return new Point(int.Parse(splitInput[0]), int.Parse(splitInput[1]));
     }
 
-    private IDirection GetStartingDirection()
+    private IDirection GetStartingDirection(string _positionAsString)
     {
         var splitInput = _positionAsString.Split(":").ToList();
         var type = DirectionType.Create(splitInput[2]);
 
         return DirectionFactory.CreateDirection(type);
-    }
-
-    private string GetFinalPosition(Point position, IDirection direction)
-    {
-        return $"{position.X}:{position.Y}:{direction.AsString()}";
     }
 }
