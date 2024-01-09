@@ -1,3 +1,6 @@
+![build](https://github.com/amlsantos/marsRover-tdd-kata/actions/workflows/build.yml/badge.svg)
+![test](https://github.com/amlsantos/marsRover-tdd-kata/actions/workflows/test.yml/badge.svg)
+
 # Mars Rovers Kata
 
 ## Introduction
@@ -21,7 +24,7 @@ Make sure you have the following installed on your machine:
 ### Clone the Repository
 
 ```bash
-git clone [https://github.com/amlsantos/marsRover-tdd-kata.git)
+git clone https://github.com/amlsantos/marsRover-tdd-kata.git
 cd marsRover-tdd-kata
 ```
 
