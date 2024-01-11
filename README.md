@@ -126,9 +126,9 @@ We welcome contributions to enhance the Mars Rovers Kata project. Follow the ste
 
 # Mars Rovers Kata - Acknowledgments
 
-- [Jason Gorman](https://codemanship.co.uk/parlezuml/blog/?postid=1057): The original creator of the Mars Rovers Kata, providing a challenging and engaging coding exercise.
+- [Victor Farcic](https://technologyconversations.com/2014/10/17/java-tutorial-through-katas-mars-rover/): Sample implementation for this kata.
 
-- [Indiana Codes](https://www.youtube.com/watch?v=_hdanhfIAUI): For his solution, that inspired this repo
+- [Indiana Codes](https://www.youtube.com/watch?v=_hdanhfIAUI): For his solution, that inspired this repo.
 
 
 
